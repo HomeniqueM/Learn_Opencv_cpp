@@ -1,5 +1,5 @@
 bluid: 
-	g++ ./src/*.cpp -o opcv.o -I/usr/include/opencv4
+	g++ ./src/*.cpp -o opcv.o -I /usr/include/opencv4
 
 run: bluid
 		./opcv.o
