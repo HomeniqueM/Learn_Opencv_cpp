@@ -1,0 +1,6 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/homenique/Data/Code/Learn_Opencv_cpp'
+make: Leaving directory '/home/homenique/Data/Code/Learn_Opencv_cpp'
+ 
+make: *** No targets.  Stop.
+
