@@ -4,14 +4,18 @@
 #include<iostream>
 
 void inputopencv(){
-    cv::imread;
+   std::string path = "imgs/trigulos.jpg";
+   cv::Mat img = cv::imread(path);// Matriz para lidar com images 
+
+   cv::imshow("Leitura de Imagem",img);
+   cv::waitKey(0);
 }
 
 
 
 int main(int argc, char const *argv[])
 {
-    std::string path;
+    inputopencv();
 
     return 0;
 }
