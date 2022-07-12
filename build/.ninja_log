@@ -1,0 +1,8 @@
+# ninja log v5
+1	7	0	/home/homenique/Data/Code/Learn_Opencv_cpp/build/CMakeFiles/cmake.verify_globs	aaa5ea461adc4c32
+5	644	1657667337416080700	CMakeFiles/DisplayImage.dir/src/main.cpp.o	6d0375ab75972b5f
+5	591	1657666443930865700	DisplayImage	ea36a8ed815c4dbf
+2	208	1657666386176451700	CMakeFiles/DisplayImage.dir/src/basicFuntions.cpp.o	673e0ba9d28eb4ca
+1	6	0	/home/homenique/Data/Code/Learn_Opencv_cpp/build/CMakeFiles/cmake.verify_globs	aaa5ea461adc4c32
+6	1130	1657667915832641300	CMakeFiles/DisplayImage.dir/src/includes/basicFuntions.cpp.o	3c23d10c087258c2
+1130	1331	1657667916030268500	DisplayImage	aeb792c7f87564f2
