@@ -27,7 +27,7 @@
 					[
 						0
 					],
-					"name" : "DisplayImage",
+					"name" : "DisplayImage.out",
 					"targetIndexes" : 
 					[
 						0
@@ -38,9 +38,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "DisplayImage::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-DisplayImage-Debug-e91335ae0ec891a3492d.json",
-					"name" : "DisplayImage",
+					"id" : "DisplayImage.out::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-DisplayImage.out-Debug-b1eb85c1ab5a127a09fd.json",
+					"name" : "DisplayImage.out",
 					"projectIndex" : 0
 				}
 			]

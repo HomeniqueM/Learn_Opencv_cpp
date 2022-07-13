@@ -43,7 +43,7 @@ void inputVideosOpenCV()
 
 int main(int argc, char const *argv[])
 {
-    hello();
+    cv_erode();
 
     return 0;
 }

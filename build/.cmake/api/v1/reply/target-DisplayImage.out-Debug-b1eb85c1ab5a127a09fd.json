@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "DisplayImage"
+			"path" : "DisplayImage.out"
 		}
 	],
 	"backtrace" : 1,
@@ -68,7 +68,7 @@
 			]
 		}
 	],
-	"id" : "DisplayImage::@6890427a1f51a3e7e1df",
+	"id" : "DisplayImage.out::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -362,8 +362,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "DisplayImage",
-	"nameOnDisk" : "DisplayImage",
+	"name" : "DisplayImage.out",
+	"nameOnDisk" : "DisplayImage.out",
 	"paths" : 
 	{
 		"build" : ".",

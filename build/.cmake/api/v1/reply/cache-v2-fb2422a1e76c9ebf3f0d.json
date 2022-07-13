@@ -831,7 +831,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "DisplayImage"
+			"value" : "DisplayImage.out"
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -1112,6 +1112,42 @@
 			],
 			"type" : "BOOL",
 			"value" : "FALSE"
+		},
+		{
+			"name" : "DisplayImage.out_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/home/homenique/Data/Code/Learn_Opencv_cpp/build"
+		},
+		{
+			"name" : "DisplayImage.out_IS_TOP_LEVEL",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "ON"
+		},
+		{
+			"name" : "DisplayImage.out_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/home/homenique/Data/Code/Learn_Opencv_cpp"
 		},
 		{
 			"name" : "DisplayImage_BINARY_DIR",
