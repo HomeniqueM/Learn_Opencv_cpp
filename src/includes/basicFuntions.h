@@ -11,5 +11,6 @@ void cv_Canny();
 void cv_dilate();
 void cv_erode();
 void cv_resize();
+void cv_crop();
 
 #endif

@@ -95,3 +95,17 @@ void cv_resize()
     cv::imshow("Resize 2 20% do tamanho", imgRezise2);
     cv::waitKey(0);
 }
+
+
+void cv_crop()
+{
+    std::string path = "imgs/trigulos.jpg";
+    cv::Mat img = cv::imread(path); // Matriz para lidar com images
+    cv::Mat imgCrop;
+    cv::Rect roi(100,100,300,250);
+    
+    imgCrop = img(roi);
+    cv::imshow("Imagem Original", img);
+    cv::imshow("CROP", imgCrop);
+    cv::waitKey(0);
+}
