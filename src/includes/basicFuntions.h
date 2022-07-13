@@ -10,5 +10,6 @@ void cv_gaussian_blur();
 void cv_Canny();
 void cv_dilate();
 void cv_erode();
+void cv_resize();
 
 #endif
