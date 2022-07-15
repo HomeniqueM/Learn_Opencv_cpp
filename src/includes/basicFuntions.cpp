@@ -116,7 +116,7 @@ void cv_crop()
  */
 
 cv::Mat empty_image8bits(int height, int width ){
-    cv::Mat img( height,width, CV_8UC3 ,cv::Scalar(0,0,0));
+    cv::Mat img( height,width, CV_8UC3 ,cv::Scalar(40,33,28));
     return img;
 }
 
@@ -146,8 +146,16 @@ void cv_rectangle_drawing (){
     cv::rectangle(img,cv::Point(130,226),cv::Point(382,286), cv::Scalar(255,255,255),cv::FILLED);
     cv::imshow("Imagem com um Retângulo", img);
     // Aumentar a borda 
-    
-
     cv::waitKey(0);
 
+}
+
+void cv_line_drawing(){
+    cv::Mat img = empty_image8bits(512,512);
+    // imagem, ponto inicial (x,y) ponto final (x,y)
+    cv::line(img,cv::Point(130,296),cv::Point(382,296),cv::Scalar(0,0,255),5);
+    cv::line(img,cv::Point(130,296),cv::Point(130,100),cv::Scalar(216,140,26),5);
+    cv::line(img,cv::Point(130,100),cv::Point(382,296),cv::Scalar(0,255,0),5);
+    cv::imshow("Line", img);
+    cv::waitKey(0);
 }

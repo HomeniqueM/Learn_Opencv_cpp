@@ -43,7 +43,7 @@ void inputVideosOpenCV()
 
 int main(int argc, char const *argv[])
 {
-    cv_rectangle_drawing();
+    cv_line_drawing();
 
     return 0;
 }
