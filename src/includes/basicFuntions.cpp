@@ -138,3 +138,16 @@ void cv_circle_drawing (){
     cv::waitKey(0);
 
 }
+
+void cv_rectangle_drawing (){
+    cv::Mat img = empty_image8bits(512,512);
+    
+    cv::circle(img,cv::Point(256,256),155, cv::Scalar(0,69,255),cv::FILLED);    
+    cv::rectangle(img,cv::Point(130,226),cv::Point(382,286), cv::Scalar(255,255,255),cv::FILLED);
+    cv::imshow("Imagem com um Retângulo", img);
+    // Aumentar a borda 
+    
+
+    cv::waitKey(0);
+
+}
