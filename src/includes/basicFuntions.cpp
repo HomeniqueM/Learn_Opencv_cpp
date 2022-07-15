@@ -109,3 +109,32 @@ void cv_crop()
     cv::imshow("CROP", imgCrop);
     cv::waitKey(0);
 }
+
+/**
+ * Como desenhar formas e letras em uma imagem
+ * 
+ */
+
+cv::Mat empty_image8bits(int height, int width ){
+    cv::Mat img( height,width, CV_8UC3 ,cv::Scalar(0,0,0));
+    return img;
+}
+
+
+void cv_circle_drawing (){
+    cv::Mat img = empty_image8bits(512,512);
+    cv::imshow("Imagem Vazia", img);
+    
+    cv::circle(img,cv::Point(256,256),155, cv::Scalar(0,69,255));
+    cv::imshow("Imagem com um circulo", img);
+    // Aumentar a borda 
+    cv::circle(img,cv::Point(256,256),155, cv::Scalar(0,69,255),10);
+    cv::imshow("Imagem com um circulo borda +10", img);
+
+    // Preencher o circulo 
+    cv::circle(img,cv::Point(256,256),155, cv::Scalar(0,69,255),cv::FILLED);
+    cv::imshow("Imagem com um circulo preenchido", img);
+
+    cv::waitKey(0);
+
+}

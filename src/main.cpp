@@ -43,7 +43,7 @@ void inputVideosOpenCV()
 
 int main(int argc, char const *argv[])
 {
-    cv_crop();
+    cv_circle_drawing();
 
     return 0;
 }

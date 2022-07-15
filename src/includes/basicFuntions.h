@@ -12,5 +12,7 @@ void cv_dilate();
 void cv_erode();
 void cv_resize();
 void cv_crop();
+cv::Mat empty_image8bits();
+void cv_circle_drawing();
 
 #endif
