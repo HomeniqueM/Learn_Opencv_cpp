@@ -159,3 +159,14 @@ void cv_line_drawing(){
     cv::imshow("Line", img);
     cv::waitKey(0);
 }
+
+void cv_text_drawing(){
+    cv::Mat img = empty_image8bits(512,512);
+
+    // imagem, ponto inicial (x,y) ponto final (x,y)
+    cv::line(img,cv::Point(130,296),cv::Point(382,296),cv::Scalar(0,69,255),3);
+    cv::rectangle(img,cv::Point(70,200),cv::Point(457,286), cv::Scalar(255,255,255),cv::FILLED);
+    cv::putText(img,"Hello World",cv::Point(70,262),cv::FONT_HERSHEY_COMPLEX, 2,cv::Scalar(0,69,255),2);
+    cv::imshow("Line", img);
+    cv::waitKey(0);
+}
