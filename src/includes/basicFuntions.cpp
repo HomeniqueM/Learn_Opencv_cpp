@@ -102,7 +102,7 @@ void cv_crop()
     std::string path = "imgs/trigulos.jpg";
     cv::Mat img = cv::imread(path); // Matriz para lidar com images
     cv::Mat imgCrop;
-    cv::Rect roi(100,100,300,250);
+    cv::Rect roi(0,0,300,300);
     
     imgCrop = img(roi);
     cv::imshow("Imagem Original", img);
