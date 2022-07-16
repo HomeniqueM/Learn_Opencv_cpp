@@ -16,4 +16,6 @@ void cv_circle_drawing();
 void cv_rectangle_drawing();
 void cv_line_drawing();
 void cv_text_drawing();
+void cv_warp_perspective();
+
 #endif
