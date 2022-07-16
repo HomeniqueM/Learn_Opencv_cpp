@@ -43,7 +43,7 @@ void inputVideosOpenCV()
 
 int main(int argc, char const *argv[])
 {
-    cv_warp_perspective();
+    cv_color_detection_and_trackBar();
 
     return 0;
 }

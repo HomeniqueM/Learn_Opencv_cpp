@@ -175,7 +175,7 @@ void cv_text_drawing()
 void cv_warp_perspective()
 {
     float width = 250, height = 350;
-    cv::Mat matrix, imgWarp, imgWarpQueen,imgWarpJack;
+    cv::Mat matrix, imgWarp, imgWarpQueen, imgWarpJack;
     std::string path = "imgs/cards.jpg";
     cv::Mat img = cv::imread(path);
 
@@ -212,4 +212,57 @@ void cv_warp_perspective()
     cv::imshow("Card Warp Queen", imgWarpQueen);
     cv::imshow("Card Warp Jack", imgWarpJack);
     cv::waitKey();
+}
+
+void cv_color_detection()
+{
+    int hmin = 0, smin = 110, vmin = 153;
+    int hmax = 19, smax = 240, vmax = 240;
+
+    std::string path = "imgs/Similar-geometric-shapes.png";
+    cv::Mat mask, imgHVS, img = cv::imread(path);
+    cv::Scalar lower(hmin, smin, vmin);
+    cv::Scalar upper(hmax, smax, vmax);
+
+    // Converter a imagem para HVS
+    cv::cvtColor(img, imgHVS, cv::COLOR_BGR2HSV);
+    cv::inRange(imgHVS, lower, upper, mask);
+
+    cv::imshow("Original", img);
+    cv::imshow("Img HVS", imgHVS);
+    cv::imshow("mask", mask);
+    cv::waitKey(0);
+}
+
+void cv_color_detection_and_trackBar()
+{
+    int hmin = 0, smin = 110, vmin = 153;
+    int hmax = 19, smax = 240, vmax = 240;
+
+    std::string path = "imgs/Similar-geometric-shapes.png";
+    std::string windowName = "Trackbars";
+    cv::Mat mask, imgHVS, img = cv::imread(path);
+    // Converter a imagem para HVS
+    cv::cvtColor(img, imgHVS, cv::COLOR_BGR2HSV);
+    
+    cv::namedWindow(windowName,(640,200));
+    cv::createTrackbar("Hue Min",windowName,&hmin,179);
+    cv::createTrackbar("Hue Max",windowName,&hmax,179);
+    cv::createTrackbar("Sat Min",windowName,&smin,255);
+    cv::createTrackbar("Sat Max",windowName,&smax,255);
+    cv::createTrackbar("Val Min",windowName,&vmin,255);
+    cv::createTrackbar("Val Max",windowName,&vmax,255);
+
+    while (true)
+    {
+        cv::Scalar lower(hmin, smin, vmin);
+        cv::Scalar upper(hmax, smax, vmax);
+
+        cv::inRange(imgHVS, lower, upper, mask);
+
+        cv::imshow("Original", img);
+      //  cv::imshow("Img HVS", imgHVS);
+        cv::imshow("mask", mask);
+        cv::waitKey(1);
+    }
 }
