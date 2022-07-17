@@ -3,6 +3,7 @@
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/highgui.hpp>
 #include <opencv2/imgproc.hpp>
+#include <opencv2/objdetect.hpp>
 #include <iostream>
 
 void cv_gray_scale();
@@ -20,6 +21,6 @@ void cv_warp_perspective();
 void cv_color_detection();
 void cv_color_detection_and_trackBar();
 void cv_shape_contour_detection();
-
+void cv_face_detection();
 
 #endif

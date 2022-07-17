@@ -330,7 +330,7 @@ void get_contours(cv::Mat base, cv::Mat outPutImage)
 
 void cv_shape_contour_detection()
 {
-   // std::string path = "imgs/Similar-geometric-shapes.png";
+    // std::string path = "imgs/Similar-geometric-shapes.png";
     std::string path = "imgs/shapes.png";
     cv::Mat imgCanny, imgGray, imgBlur, imgDil, ImgErode;
     cv::Mat img = cv::imread(path);
@@ -347,4 +347,38 @@ void cv_shape_contour_detection()
     cv::imshow("Image", img);
 
     cv::waitKey(0);
+}
+
+void cv_face_detection()
+{
+    std::string path = "imgs/Lone_02.jpg";
+    cv::Mat img = cv::imread(path);
+    cv::CascadeClassifier faceCascade;
+    faceCascade.load("utils/haarcascade_frontalface_default.xml");
+
+    // Por segurança, vamos verificar se foi carregado com sucesso
+    try
+    {
+        if (!faceCascade.empty())
+        {
+            std::vector<cv::Rect> faces;
+            faceCascade.detectMultiScale(img, faces, 1.1, 10);
+
+            for (int i = 0; i < faces.size(); i++)
+            {
+                cv::rectangle(img, {faces[i].tl(), faces[i].br()}, cv::Scalar(0, 255, 0), 3);
+            }
+
+            cv::imshow("Image", img);
+            cv::waitKey(0);
+        }
+        else
+        {
+            throw 505;
+        }
+    }
+    catch (int numb)
+    {
+        std::cout << "XML file not loaded" << std::endl;
+    }
 }

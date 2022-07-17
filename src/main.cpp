@@ -43,7 +43,7 @@ void inputVideosOpenCV()
 
 int main(int argc, char const *argv[])
 {
-    cv_shape_contour_detection();
+    cv_face_detection();
 
     return 0;
 }
