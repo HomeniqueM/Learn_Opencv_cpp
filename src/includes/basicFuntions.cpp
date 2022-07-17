@@ -267,20 +267,71 @@ void cv_color_detection_and_trackBar()
     }
 }
 
-void get_contours(cv::Mat base,cv::Mat outPutImage){
+void get_contours(cv::Mat base, cv::Mat outPutImage)
+{
     std::vector<std::vector<cv::Point>> contours;
     std::vector<cv::Vec4i> hierarchy;
-    cv::findContours(base,contours,hierarchy,cv::RETR_EXTERNAL,cv::CHAIN_APPROX_SIMPLE);
+    int area, objeCor;
+    double peri;
+    float aspRatio;
+    std::string objectType;
 
-    cv::drawContours(outPutImage,contours,-1,cv::Scalar(255,0,255),3);
-    
+    cv::findContours(base, contours, hierarchy, cv::RETR_EXTERNAL, cv::CHAIN_APPROX_SIMPLE);
 
+    std::vector<std::vector<cv::Point>> conPoly(contours.size());
+    std::vector<cv::Rect> boundRect(contours.size());
+
+    // Remover possiveis Ruidos
+
+    for (int i = 0; i < contours.size(); i++)
+    {
+        area = cv::contourArea(contours[i]);
+        // std::cout << "Tamanho da area: " << area << "\n";
+        if (area > 5000)
+        {
+            peri = cv::arcLength(contours[i], true);
+            cv::approxPolyDP(contours[i], conPoly[i], 0.02 * peri, true);
+            cv::drawContours(outPutImage, conPoly, i, cv::Scalar(255, 0, 255), 3);
+            //  std::cout << "Numero de vetices: " << conPoly[i].size() << "\n";
+
+            // Area de ocupação de um objeto
+            boundRect[i] = cv::boundingRect(conPoly[i]);
+            // cv::rectangle(outPutImage, boundRect[i].tl(), boundRect[i].br(), cv::Scalar(0, 255, 0), 5);
+
+            objeCor = (int)conPoly[i].size();
+
+            if (objeCor == 3)
+            {
+                objectType = "triangulo";
+            }
+            else if (objeCor == 4)
+            {
+                aspRatio = (float)boundRect[i].width / (float)boundRect[i].height;
+                std::cout << "Asp Ratio: " << aspRatio << "\n";
+                if (aspRatio > 0.90 && aspRatio < 1.06)
+                {
+                    objectType = "Quadrado";
+                }
+                else
+                {
+                    objectType = "Retangulo";
+                }
+            }
+            else if (objeCor > 4)
+            {
+                objectType = "Circulo";
+            }
+
+            cv::putText(outPutImage, objectType, {boundRect[i].x, boundRect[i].y - 5}, cv::FONT_HERSHEY_PLAIN, 1, cv::Scalar(0, 0, 255), 1);
+        }
+    }
+    std::cout << std::endl;
 }
-
 
 void cv_shape_contour_detection()
 {
-    std::string path = "imgs/Similar-geometric-shapes.png";
+   // std::string path = "imgs/Similar-geometric-shapes.png";
+    std::string path = "imgs/shapes.png";
     cv::Mat imgCanny, imgGray, imgBlur, imgDil, ImgErode;
     cv::Mat img = cv::imread(path);
     cv::Mat kernel = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(3, 3));
@@ -289,9 +340,9 @@ void cv_shape_contour_detection()
     cv::cvtColor(img, imgGray, cv::COLOR_BGR2GRAY);
     cv::GaussianBlur(imgGray, imgBlur, cv::Size(3, 3), 3, 0);
     cv::Canny(imgBlur, imgCanny, 25, 75);
-    cv::dilate(imgCanny,imgDil,kernel);
+    cv::dilate(imgCanny, imgDil, kernel);
 
-    get_contours(imgDil,img);
+    get_contours(imgDil, img);
 
     cv::imshow("Image", img);
 
