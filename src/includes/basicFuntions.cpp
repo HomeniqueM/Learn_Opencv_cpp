@@ -244,14 +244,14 @@ void cv_color_detection_and_trackBar()
     cv::Mat mask, imgHVS, img = cv::imread(path);
     // Converter a imagem para HVS
     cv::cvtColor(img, imgHVS, cv::COLOR_BGR2HSV);
-    
-    cv::namedWindow(windowName,(640,200));
-    cv::createTrackbar("Hue Min",windowName,&hmin,179);
-    cv::createTrackbar("Hue Max",windowName,&hmax,179);
-    cv::createTrackbar("Sat Min",windowName,&smin,255);
-    cv::createTrackbar("Sat Max",windowName,&smax,255);
-    cv::createTrackbar("Val Min",windowName,&vmin,255);
-    cv::createTrackbar("Val Max",windowName,&vmax,255);
+
+    cv::namedWindow(windowName, (400, 200));
+    cv::createTrackbar("Hue Min", windowName, &hmin, 179);
+    cv::createTrackbar("Hue Max", windowName, &hmax, 179);
+    cv::createTrackbar("Sat Min", windowName, &smin, 255);
+    cv::createTrackbar("Sat Max", windowName, &smax, 255);
+    cv::createTrackbar("Val Min", windowName, &vmin, 255);
+    cv::createTrackbar("Val Max", windowName, &vmax, 255);
 
     while (true)
     {
@@ -261,8 +261,39 @@ void cv_color_detection_and_trackBar()
         cv::inRange(imgHVS, lower, upper, mask);
 
         cv::imshow("Original", img);
-      //  cv::imshow("Img HVS", imgHVS);
+        //  cv::imshow("Img HVS", imgHVS);
         cv::imshow("mask", mask);
         cv::waitKey(1);
     }
+}
+
+void get_contours(cv::Mat base,cv::Mat outPutImage){
+    std::vector<std::vector<cv::Point>> contours;
+    std::vector<cv::Vec4i> hierarchy;
+    cv::findContours(base,contours,hierarchy,cv::RETR_EXTERNAL,cv::CHAIN_APPROX_SIMPLE);
+
+    cv::drawContours(outPutImage,contours,-1,cv::Scalar(255,0,255),3);
+    
+
+}
+
+
+void cv_shape_contour_detection()
+{
+    std::string path = "imgs/Similar-geometric-shapes.png";
+    cv::Mat imgCanny, imgGray, imgBlur, imgDil, ImgErode;
+    cv::Mat img = cv::imread(path);
+    cv::Mat kernel = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(3, 3));
+
+    // Pre processamento
+    cv::cvtColor(img, imgGray, cv::COLOR_BGR2GRAY);
+    cv::GaussianBlur(imgGray, imgBlur, cv::Size(3, 3), 3, 0);
+    cv::Canny(imgBlur, imgCanny, 25, 75);
+    cv::dilate(imgCanny,imgDil,kernel);
+
+    get_contours(imgDil,img);
+
+    cv::imshow("Image", img);
+
+    cv::waitKey(0);
 }

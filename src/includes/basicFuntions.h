@@ -19,5 +19,7 @@ void cv_text_drawing();
 void cv_warp_perspective();
 void cv_color_detection();
 void cv_color_detection_and_trackBar();
+void cv_shape_contour_detection();
+
 
 #endif

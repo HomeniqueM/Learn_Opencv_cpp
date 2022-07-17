@@ -43,7 +43,7 @@ void inputVideosOpenCV()
 
 int main(int argc, char const *argv[])
 {
-    cv_color_detection_and_trackBar();
+    cv_shape_contour_detection();
 
     return 0;
 }
